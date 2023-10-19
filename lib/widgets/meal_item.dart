@@ -1,11 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meals_app/models/MealDetailScreen.dart';
 import 'package:meals_app/models/meals.dart';
+
+import 'meal_item_trait.dart';
 
 class MealItem extends StatelessWidget {
   const MealItem({super.key, required this.meal});
 
   final Meal meal;
+
+  String get complexityText {
+    return meal.complexity.name[0].toUpperCase() +
+        meal.complexity.name.substring(1);
+  }
+
+  String get affordabilityText {
+    return meal.affordability.name[0].toUpperCase() +
+        meal.affordability.name.substring(1);
+  }
+
+  void _selectMealItem(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => MealDetailScreen(meal: meal),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +36,7 @@ class MealItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       elevation: 5,
       child: InkWell(
-        onTap: () {},
+        onTap: () {_selectMealItem(context);},
         child: Stack(
           children: [
             FadeInImage(
@@ -33,7 +54,7 @@ class MealItem extends StatelessWidget {
                   color: Colors.black54,
                   padding: const EdgeInsets.symmetric(
                     vertical: 6,
-                    horizontal: 44,
+                    horizontal: 20,
                   ),
                   child: Column(
                     children: [
@@ -46,14 +67,28 @@ class MealItem extends StatelessWidget {
                         style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 20),
+                            fontSize: 18),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
-                      Row(children: [
-
-                      ],)
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          MealItemTrait(
+                            icon: Icons.watch_later_outlined,
+                            label: '${meal.duration} min',
+                          ),
+                          MealItemTrait(
+                            icon: Icons.work,
+                            label: complexityText,
+                          ),
+                          MealItemTrait(
+                            icon: Icons.attach_money,
+                            label: affordabilityText,
+                          ),
+                        ],
+                      )
                     ],
                   )),
             ),
