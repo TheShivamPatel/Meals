@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meals_app/data/category_data.dart';
-import 'package:meals_app/screens/CategoriesScreen.dart';
-import 'package:meals_app/screens/MealsScreen.dart';
+import 'package:meals_app/screens/tabs.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
@@ -28,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: theme,
       home: const Scaffold(
         body: Center(
-          child: CategoriesScreen(),
+          child: TabsScreen(),
         ),
       )
     );

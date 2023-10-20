@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/data/category_data.dart';
 import 'package:meals_app/models/CategoryModel.dart';
 import 'package:meals_app/screens/MealsScreen.dart';
-
 import '../widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -23,11 +22,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pick your categories'),
-      ),
-      body: GridView(
+    return GridView(
         padding: const EdgeInsets.all(15),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -43,7 +38,6 @@ class CategoriesScreen extends StatelessWidget {
               },
             ),
         ],
-      ),
-    );
+      );
   }
 }

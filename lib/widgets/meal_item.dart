@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meals_app/models/MealDetailScreen.dart';
+import 'package:meals_app/screens/MealDetailScreen.dart';
 import 'package:meals_app/models/meals.dart';
 
 import 'meal_item_trait.dart';
